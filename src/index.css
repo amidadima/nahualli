@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============ ГРОБНИКИ: тема «spooky-cute» ============ */
+:root {
+  --g-bg: #150f1e;
+  --g-bg2: #1d1428;
+  --g-panel: #241a33;
+  --g-panel2: #2d2140;
+  --g-ink: #0a0612;
+  --g-cream: #f3e9d2;
+  --g-muted: #a493c2;
+  --g-amber: #ffb03a;
+  --g-lime: #b7f05c;
+  --g-blood: #ff5470;
+  --g-violet: #9d6bf3;
+}
+
+html, body {
+  background: var(--g-bg);
+  color: var(--g-cream);
+  font-family: "Rubik", system-ui, sans-serif;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-display {
+  font-family: "Russo One", "Rubik", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* твёрдая мультяшная тень + толстая обводка */
+.g-panel {
+  background: var(--g-panel);
+  border: 3px solid var(--g-ink);
+  border-radius: 18px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.5);
+}
+.g-btn {
+  border: 3px solid var(--g-ink);
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.55);
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+  user-select: none;
+  touch-action: manipulation;
+}
+.g-btn:active {
+  transform: translateY(4px) scale(0.97);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+}
+.g-btn:disabled {
+  filter: grayscale(0.7) brightness(0.6);
+  pointer-events: none;
+}
+.text-stroke {
+  -webkit-text-stroke: 2px var(--g-ink);
+  paint-order: stroke fill;
+}
+
+/* фон: свечной градиент + мерцающие звёзды-пыль */
+.crypt-bg {
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgba(157, 107, 243, 0.22), transparent 60%),
+    radial-gradient(800px 400px at 85% 110%, rgba(255, 176, 58, 0.1), transparent 60%),
+    var(--g-bg);
+}
+.dust {
+  position: absolute;
+  width: 4px; height: 4px;
+  border-radius: 9999px;
+  background: var(--g-amber);
+  opacity: 0.35;
+  animation: dust-float 6s ease-in-out infinite;
+}
+@keyframes dust-float {
+  0%, 100% { transform: translateY(0); opacity: 0.15; }
+  50% { transform: translateY(-18px); opacity: 0.5; }
+}
+
+/* персонаж */
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.anim-bob { animation: bob 2.2s ease-in-out infinite; }
+
+@keyframes lunge-left {
+  0% { transform: translateX(0); }
+  35% { transform: translateX(46px) rotate(4deg); }
+  100% { transform: translateX(0); }
+}
+@keyframes lunge-right {
+  0% { transform: translateX(0); }
+  35% { transform: translateX(-46px) rotate(-4deg); }
+  100% { transform: translateX(0); }
+}
+.anim-lunge-l { animation: lunge-left 380ms ease-out; }
+.anim-lunge-r { animation: lunge-right 380ms ease-out; }
+
+@keyframes shake-hit {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-6px, 2px) rotate(-3deg); }
+  40% { transform: translate(5px, -3px) rotate(2deg); }
+  60% { transform: translate(-4px, 1px); }
+  80% { transform: translate(3px, 2px); }
+}
+.anim-hit { animation: shake-hit 320ms ease; }
+
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-5px, 3px); }
+  50% { transform: translate(4px, -2px); }
+  75% { transform: translate(-3px, -3px); }
+}
+.anim-shake { animation: screen-shake 300ms ease; }
+
+@keyframes dmg-float {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  15% { transform: translateY(-10px) scale(1.25); opacity: 1; }
+  100% { transform: translateY(-56px) scale(1); opacity: 0; }
+}
+.dmg-float { animation: dmg-float 900ms ease-out forwards; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.anim-fade-up { animation: fade-up 450ms ease-out both; }
+
+@keyframes pop-in {
+  0% { transform: scale(0.7); opacity: 0; }
+  70% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.anim-pop { animation: pop-in 350ms ease-out both; }
+
+@keyframes flame {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50% { transform: scaleY(1.15) scaleX(0.92) translateY(-1px); }
+}
+.anim-flame { animation: flame 900ms ease-in-out infinite; transform-origin: bottom center; }
+
+@keyframes glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(255, 176, 58, 0.55)); }
+  50% { filter: drop-shadow(0 0 16px rgba(255, 176, 58, 0.85)); }
+}
+.anim-glow { animation: glow-pulse 2.4s ease-in-out infinite; }
+
+@keyframes dead-fall {
+  0% { transform: rotate(0) translateY(0); opacity: 1; }
+  100% { transform: rotate(80deg) translateY(24px); opacity: 0.35; }
+}
+.anim-dead { animation: dead-fall 700ms ease-in forwards; }
+
+/* полоса опыта/HP */
+.bar-track {
+  background: var(--g-ink);
+  border-radius: 9999px;
+  overflow: hidden;
+  border: 2px solid var(--g-ink);
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 400ms ease;
+}
+
+/* скроллбар батл-лога */
+.battle-log::-webkit-scrollbar { width: 0; }
+
+@media (min-width: 1024px) {
+  .desktop-frame {
+    max-width: 430px;
+    margin: 24px auto;
+    border: 3px solid var(--g-ink);
+    border-radius: 28px;
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    min-height: calc(100vh - 48px);
+  }
+}

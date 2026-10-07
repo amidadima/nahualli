@@ -1,0 +1,46 @@
+import {
+  mysqlTable,
+  serial,
+  varchar,
+  int,
+  bigint,
+  json,
+  timestamp,
+} from "drizzle-orm/mysql-core";
+
+export const players = mysqlTable("players", {
+  id: serial("id").primaryKey(),
+  token: varchar("token", { length: 64 }).notNull().unique(),
+  name: varchar("name", { length: 40 }).notNull(),
+  lookSeed: int("look_seed").notNull().default(1),
+  level: int("level").notNull().default(1),
+  xp: int("xp").notNull().default(0),
+  maxHp: int("max_hp").notNull().default(30),
+  str: int("str").notNull().default(3),
+  agi: int("agi").notNull().default(3),
+  spd: int("spd").notNull().default(3),
+  weaponId: varchar("weapon_id", { length: 32 }).notNull().default("claws"),
+  skills: json("skills").$type<string[]>().notNull(),
+  torches: int("torches").notNull().default(5),
+  dayKey: varchar("day_key", { length: 10 }).notNull().default(""),
+  lastDaily: varchar("last_daily", { length: 10 }),
+  generation: int("generation").notNull().default(1),
+  pendingPerks: json("pending_perks").$type<{ type: string; id: string; name: string; desc: string }[] | null>(),
+  wins: int("wins").notNull().default(0),
+  losses: int("losses").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const ancestors = mysqlTable("ancestors", {
+  id: serial("id").primaryKey(),
+  playerToken: varchar("player_token", { length: 64 }).notNull(),
+  name: varchar("name", { length: 40 }).notNull(),
+  generation: int("generation").notNull().default(1),
+  level: int("level").notNull().default(1),
+  weaponId: varchar("weapon_id", { length: 32 }).notNull().default("claws"),
+  wins: int("wins").notNull().default(0),
+  losses: int("losses").notNull().default(0),
+  heirloomName: varchar("heirloom_name", { length: 60 }).notNull().default(""),
+  playerId: bigint("player_id", { mode: "number", unsigned: true }),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});

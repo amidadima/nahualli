@@ -68,8 +68,6 @@
     "@trpc/react-query": "^11.8.1",
     "@trpc/server": "^11.8.1",
     "dotenv": "^17.2.3",
-    "hono": "^4.8.3",
-    "@hono/node-server": "^1.14.3",
     "superjson": "^2.2.6",
     "ai": "6.0.290",
     "@ai-sdk/openai-compatible": "2.0.78",
